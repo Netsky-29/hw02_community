@@ -11,8 +11,12 @@ class Group(models.Model):
     slug = models.SlugField(
         max_length=50,
         unique=True,
-        verbose_name='тэг'
+        verbose_name='Url адрес'
     )
+
+    class Meta:
+        verbose_name = 'группа'
+        verbose_name_plural = 'группы'
 
     def __str__(self):
         return self.title
@@ -32,13 +36,17 @@ class Post(models.Model):
     )
     group = models.ForeignKey(
         Group,
-        related_name='group_posts',
         on_delete=models.SET_NULL,
-        max_length=100,
+        related_name='group_posts',
         blank=True,
         null=True,
         verbose_name='группа'
     )
 
+    def __str__(self):
+        return self.text
+
     class Meta:
+        verbose_name = 'пост'
+        verbose_name_plural = 'посты'
         ordering = ['-pub_date']

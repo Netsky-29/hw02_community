@@ -21,11 +21,9 @@
     <header>
       {% include 'includes/header.html' %}
     </header>
-    <main>
-      {% block content %}
-        Контент не подвезли :(
-      {% endblock content %}
-    </main>
-      {% include 'includes/footer.html' %} 
+    {% block content %}
+      Контент не подвезли
+    {% endblock content %}
+    {% include 'includes/footer.html' %} 
   </body>
 </html> 
